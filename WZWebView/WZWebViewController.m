@@ -8,31 +8,41 @@
 
 #import "WZWebViewController.h"
 #import <WebKit/WebKit.h>
+static CGFloat const NAVIGATIONBAR_HEIGHT = 64;
+@interface WZWebViewController () <UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIGestureRecognizerDelegate>
 
-@interface WZWebViewController ()
-
+@property (nonatomic, strong) WKWebView         *wk_webView;                //WKWebView
+@property (nonatomic, strong) UIWebView         *webView;                   //webView
+@property (nonatomic, strong) UIBarButtonItem   *backBarButtonItem;         //返回按钮
+@property (nonatomic, strong) UIBarButtonItem   *closeBarButtonItem;        //关闭按钮
+@property (nonatomic, strong) id <UIGestureRecognizerDelegate> delegate;    //
+@property (nonatomic, strong) UIRefreshControl  *refreshControl;            //刷新(下拉)
+@property (nonatomic, strong) UIProgressView    *loadingProgress;           //加载进度条
+@property (nonatomic, strong) UIButton          *reloadButton;              //刷新按钮
 @end
 
 @implementation WZWebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    [self createWebView];
+//    [self createNaviItem];
+//    [self loadRequest];
     // Do any additional setup after loading the view.
 }
+
+
+//- (WKWebView *)wk_webView {
+//    if (!_wk_webView) {
+//        WKWebViewConfiguration *wk_web = [[WKWebViewConfiguration alloc] init];
+//        wk_web.preferences
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
